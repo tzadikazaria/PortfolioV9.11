@@ -61,6 +61,7 @@ Remove the preview later by deleting the two `accent-*.html` files and the "acce
 - Mobile navigation fix from V9.7 is unchanged.
 
 ## V9.9 — final refinement (superseded in V9.10)
+- V9.12: CV name, role, section labels and skill headings use Instrument Sans to match the site (still one A4 page, links clickable).
 - CV: portfolio, email and LinkedIn are clickable; summary reworded; employment dates unchanged. Source: `tools/cv.html`.
 - Open Graph / Twitter preview images in `assets/og/` (built from existing project images by `tools/make_og.py`).
   **Before publishing, set your real site address** (needed for link previews): either run
@@ -74,6 +75,22 @@ Remove the preview later by deleting the two `accent-*.html` files and the "acce
   Disable permanently: `FX_CURSOR = False` in `tools/build_v9.py`, then `python3 tools/build_v9.py`. Without Python: remove `class="fx-cursor"` from `<html>` and the `fx.js` script tag in each page.
   Reduced motion: no trail, dot follows instantly.
 - Footer re-laid out: left-aligned title, then Email / Elsewhere / Site / Status columns and a copyright line.
+
+## V9.13 (part 1) — recruitment-focused refinement
+- Title unified to "Digital & Visual Designer" (hero eyebrow, page title, descriptions, About, Marketplace role). Hero headline unchanged; supporting line replaced with the new copy.
+- About page now uses "OG Global Import" for the employer (CV PDF untouched).
+- Marketplace: sections relabelled Context & objectives / My role / Icon system / Visual system / Listing system / Final applications. New numbered Hero 01, Benefits 02, Usage 03 breakdown of the razor listing set, with detail and sustainability visuals beneath.
+- Hatachana: positioned as Brand identity & digital experience. Wordmark added; identity and illustration sections come first; the app section leads with discover, choose, book, and onboarding is reduced to a smaller "Getting started" row (duplicate filled sign-up screen removed). Meta no longer says UX/UI.
+- Open Graph / Twitter URLs use https://tzadikazaria.com/ (override with SITE_URL if served from a sub-path). No placeholder left.
+- Not yet done (waiting on your answers): Campaign storytelling and contribution text; Sambusak asset and narrative upgrade.
+
+
+## V9.12 — focused case-study refinement
+- Marketplace: duplicates removed (04 = 07 = 10, 03 = 15, 05 = 13). Product families, listing structure and platforms rebuilt on consistent column spans with no vertical offsets, grouped Ingredients / Benefits / In context and Hero / Benefits / Usage.
+- Hatachana: reorganised into Challenge, Visual concept, Illustrations & design system, Mobile experience, Final applications. The separate user-flow section is merged into the mobile section.
+- Hatachana: 12 new original images integrated (design-system board crops, 9 app screens at 780px, landing page, laptop mockup, icon set). Palette shows real hex values from the board.
+- Headings on Marketplace and Hatachana use Instrument Sans (free, OFL; files in `assets/fonts/`), scoped by `body.ff2`. Body text, homepage and other pages stay Saira.
+- Accent #F2C230 unchanged. No other pages, CSS or the CV were touched. Only `marketplace.html`, `hatachana.html` and `tools/build_v9.py` differ from V9.11.
 
 ## V9.11
 - Custom cursor removed completely (fx.js, its CSS and the script tags are gone; the normal system cursor is used everywhere).

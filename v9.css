@@ -716,3 +716,11 @@ a:focus-visible,button:focus-visible,.pj:focus-visible,.zoom:focus-visible,.tile
 .fstatus:before{content:"";flex:none;width:9px;height:9px;margin-top:.4em;border-radius:50%;background:var(--accent)}
 .fcopy{margin:clamp(40px,5vw,72px) 0 0;padding-top:18px;border-top:1px solid rgba(255,255,255,.12);font:400 13px/1.4 var(--body);color:#9A9AA2}
 @media (max-width:900px){.footer-grid{grid-template-columns:1fr 1fr}.fg-mail,.fg-status{grid-column:1/-1}.footer-grid li a{min-height:44px}.fg-status{order:5}}
+
+/* V9.12 — headings on Marketplace and Hatachana use Instrument Sans (a free neo-grotesque close to Neue Montreal). Scoped to body.ff2. */
+@font-face{font-family:'Instrument Sans';font-weight:600;font-style:normal;font-display:swap;src:url(assets/fonts/instrument-sans-600.woff2) format('woff2')}
+@font-face{font-family:'Instrument Sans';font-weight:700;font-style:normal;font-display:swap;src:url(assets/fonts/instrument-sans-700.woff2) format('woff2')}
+body.ff2 .ct,body.ff2 .lede,body.ff2 .sx-t h2,body.ff2 .steps strong,body.ff2 .outs strong,body.ff2 .nxb .nx-h{font-family:'Instrument Sans','Helvetica Neue',Arial,sans-serif;font-stretch:100%;font-weight:700;letter-spacing:-.005em}
+body.ff2 .sx-t h2{letter-spacing:0}
+.sw.five{grid-template-columns:repeat(5,minmax(0,1fr))}
+@media (max-width:700px){.sw.five{grid-template-columns:repeat(2,minmax(0,1fr))}}

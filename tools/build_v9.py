@@ -10,7 +10,7 @@ A = ROOT + '/assets/'
 # ---------------------------------------------------------------- site settings
 # Absolute address of the published site (needed for Open Graph previews). Include the trailing slash.
 # Override at build time:  SITE_URL=https://yourname.github.io/PortfolioV9/ python3 tools/build_v9.py
-SITE_URL = os.environ.get('SITE_URL', 'https://SITE_URL_PLACEHOLDER/')
+SITE_URL = os.environ.get('SITE_URL', 'https://tzadikazaria.com/')
 
 # ---------------------------------------------------------------- helpers
 def dims(name):
@@ -111,15 +111,15 @@ PROJECTS = [
          desc='Product listing visuals for beauty and wellness brands on Asian e-commerce marketplaces.',
          lead='Designing scalable product visuals for beauty and wellness brands across Asian e-commerce marketplaces, turning product benefits into clear, consistent listing systems.',
          detail='Benefits, product photography and usage information organized into layouts that stay clear at different sizes.',
-         meta=[('Role', 'Digital designer'), ('Focus', 'Scalable listings'), ('Markets', 'Asia / E-commerce'), ('Output', 'Product visual systems')]),
+         meta=[('Role', 'Digital & visual designer'), ('Focus', 'Scalable listings'), ('Markets', 'Asia / E-commerce'), ('Output', 'Product visual systems')]),
     dict(slug='hatachana', n='03', title='Hatachana', short='Hatachana',
          kind='acad', kind_label='Academic concept', bg='#ECBA40',
          cat='Brand + mobile experience', tag='Identity · Illustration · Mobile UI',
-         blurb='Visual identity and mobile experience for guided tours inside Tel Aviv’s Central Bus Station.',
+         blurb='Brand identity and digital experience for guided tours inside Tel Aviv’s Central Bus Station.',
          desc='Academic concept: an identity, character illustrations and a mobile app for guided tours of Tel Aviv’s Central Bus Station.',
-         lead='Visual identity and mobile experience for guided tours inside Tel Aviv’s Central Bus Station.',
+         lead='Brand identity and digital experience for guided tours inside Tel Aviv’s Central Bus Station.',
          detail='Hatachana is Hebrew for “the station”. The concept presents the Central Bus Station as a place to explore through guided tours. A yellow, black and white palette and illustrated explorer characters carry from the identity into the app.',
-         meta=[('Project', 'Academic concept'), ('Deliverables', 'Brand identity · UX/UI · Illustration · Mobile'), ('Subject', 'Tel Aviv Central Bus Station'), ('Focus', 'Guided tours')]),
+         meta=[('Project', 'Academic concept'), ('Type', 'Brand identity &amp; digital experience'), ('Deliverables', 'Identity · Illustration · Iconography · Mobile app'), ('Subject', 'Tel Aviv Central Bus Station'), ('Focus', 'Guided tours')]),
     dict(slug='sambusak', n='04', title='Give Me<br><em>Sambusak.</em>', short='Give Me Sambusak',
          kind='acad', kind_label='Academic concept', bg='#DDDADF',
          cat='Brand experience', tag='Identity · Packaging · Spatial',
@@ -167,9 +167,9 @@ def outs(items):
     li = ''.join(f'<li><strong>{t}</strong>' + (f'<span>{d}</span>' if d else '') + '</li>' for t, d in items)
     return f'<ul class="outs">{li}</ul>'
 
-def sw(items):
+def sw(items, cls=''):
     li = ''.join(f'<li><i style="background:{h}"></i><b>{n}</b><span>{h}</span></li>' for n, h in items)
-    return f'<ul class="sw">{li}</ul>'
+    return f'<ul class="sw {cls}">{li}</ul>'
 
 def ph(label, ar='1.6', n=1):
     """Marked placeholder for an original image that has not been supplied yet."""
@@ -236,58 +236,68 @@ def body_marketplace():
                + img('marketplace-02', 'Lip product benefit listing', '(max-width:700px) 40vw, 26vw', True)
                + img('marketplace-11', 'Razor product visual', '(max-width:700px) 40vw, 26vw', True)
                + '</div>'))
-    out.append(sec('01', 'Challenge', 'Clear fast. Consistent everywhere.',
+    out.append(sec('01', 'Context & objectives', 'Clear fast. Consistent everywhere.',
         ['This work was part of OG Global Import’s international e-commerce operations across Asian markets, where beauty and wellness brands were sold through several marketplaces. It is separate from Fine Rituals, OG Global Import’s Israeli online store. Each marketplace needed product visuals that explained the benefits quickly and clearly, often in limited space and with different image requirements.',
          'The challenge was a scalable visual system that adapts to different brands and product types while staying consistent, informative and on-brand. My work covers the listing visuals, not the brands’ own identities.']))
-    out.append(sec('02', 'What I designed', 'Four parts of one system.', 'I designed the icons and the listing images, and prepared them for each platform.',
+    out.append(sec('02', 'My role', 'Four parts of one system.', 'I designed the icons and the listing images, and prepared them for each platform.',
         steps([('Icon library', 'Product-benefit icons, each communicating a single claim in one visual language.'), ('Scalable system', 'The same icon style applied across product categories for coherence.'),
                ('Photography integration', 'Full listing images that combine icons with product photography.'), ('Platform delivery', 'Sized and formatted to each platform’s requirements across several Asian markets.')], 'again'), 'top'))
-    out.append(sec('03', 'Benefit language', 'One icon. One message.', 'Each icon is a thin line drawing in a circle and carries one claim, from hydrating and long-lasting to vegan and cruelty-free. The shared frame keeps them consistent across categories, and keeps listings easy to scan.',
+    out.append(sec('03', 'Icon system', 'One icon. One message.', 'Each icon is a thin line drawing in a circle and carries one claim, from hydrating and long-lasting to vegan and cruelty-free. The shared frame keeps them consistent across categories, and keeps listings easy to scan.',
         M(F('marketplace-01', 'Set of benefit icons with labels', None, '1/13', None, 92)), 'top'))
-    out.append(sec('04', 'Product families', 'Same logic. New product.', 'Icons, modular layouts and product-led images communicate key benefits quickly. The same structure adapts to each product, while photography, colour and tone follow it.',
-        M(F('marketplace-03', 'Mascara ingredient benefit layout', 'Mascara — ingredients', '1/8', None, 56),
-          F('marketplace-16', 'Skincare active ingredient visual', 'Skincare — active ingredient', '8/13', None, 40, extra='margin-top:clamp(48px,8vw,128px)'))
-        + M(F('marketplace-14', 'Mascara hydrating ingredient visual', 'Mascara', '1/5', None, 31),
-            F('marketplace-18', 'Eyeliner thin and flat applicator comparison', 'Eyeliner — applicator comparison', '5/9', None, 31, extra='margin-top:clamp(32px,5vw,80px)'),
-            F('marketplace-12', 'Razor feature overview', 'Razor — features', '9/13', None, 31), cls='again')
-        + M(F('marketplace-05', 'Deodorant ingredient and benefit layout on stone', 'Ingredient story', '1/8', '1/3', 56),
-            F('marketplace-19', 'Skincare benefits layout with portrait photography', 'Skincare — benefits', '8/13', '1/2', 40),
-            F('marketplace-07', 'Razor refills with sustainability icons', 'Razor — refills', '9/13', '2/3', 31), cls='again'), 'top'))
-    out.append(sec('05', 'Listing structure', 'From hero to detail.', 'A listing set opens with the product, explains what makes it different, then shows it in use.',
-        M(F('marketplace-06', 'Razor hero product image', 'The product first', '1/9', '1/3', 62, num='01'),
-          F('marketplace-04', 'Razor product benefit layout', 'What makes it different?', '9/13', '1/2', 31, num='02'),
-          F('marketplace-08', 'Razor usage demonstration', 'Show, don’t explain', '9/13', '2/3', 31, num='03'))))
+    out.append(sec('04', 'Visual system', 'Same logic. New product.', 'Each family follows the same order: ingredients explained first, then benefits, then the product in context. The structure stays fixed, while photography, colour and tone change with the product.',
+        M(F('marketplace-03', 'Mascara ingredient benefit layout', 'Ingredients — mascara', '1/5', None, 31),
+          F('marketplace-14', 'Eyeliner ingredient benefit layout', 'Ingredients — eyeliner', '5/9', None, 31),
+          F('marketplace-16', 'Skincare active ingredient visual', 'Ingredients — skincare', '9/13', None, 31))
+        + M(F('marketplace-02', 'Lipstick benefit listing', 'Benefits — lipstick', '1/5', None, 31),
+            F('marketplace-09', 'Deodorant balm benefit listing', 'Benefits — deodorant', '5/9', None, 31),
+            F('marketplace-19', 'Skincare benefits layout with portrait photography', 'Benefits — skincare', '9/13', None, 31), cls='again')
+        + M(F('marketplace-05', 'Deodorant ingredient and benefit layout on stone', 'In context — ingredient story', '1/7', None, 46),
+            F('marketplace-17', 'Deodorant held in warm light', 'In context — product photography', '7/13', None, 46), cls='again'), 'top'))
+    out.append(sec('05', 'Listing system', 'Hero. Benefits. Usage.', 'A listing set opens with the product, explains what makes it different through icons and short claims, then shows it in use. The razor set shows the full sequence, with supporting visuals for detail and sustainability.',
+        M(F('marketplace-06', 'Razor hero product image', 'Hero — the product first', '1/5', None, 31, num='01'),
+          F('marketplace-12', 'Razor feature overview with icons', 'Benefits — features as icons', '5/9', None, 31, num='02'),
+          F('marketplace-08', 'Razor usage demonstration', 'Usage — shown in use', '9/13', None, 31, num='03'))
+        + M(F('marketplace-11', 'Razor handle detail', 'Hero — handle detail', '1/7', None, 46),
+            F('marketplace-04', 'Razor refills with sustainability icons', 'Benefits — refills and sustainability', '7/13', None, 46), cls='again'), 'top'))
     out.append(sec('06', 'Platforms & markets', 'One system. Several platforms.', 'The visual language stays the same while sizes, hierarchy and the amount of information change to suit each platform’s requirements. Keeping the layouts modular makes them easier to localise and to reuse for new products.',
-        M(F('marketplace-17', 'Product photography in warm light', 'Product photography', '1/8', None, 56),
-          F('marketplace-15', 'Mascara revitalizing ingredients', 'Mascara — revitalizing', '8/13', None, 40, extra='margin-top:clamp(40px,6vw,96px)')), 'top'))
-    out.append(sec('07', 'Delivered', 'What the work covered.', '',
+        M(F('marketplace-18', 'Eyeliner thin and flat applicator comparison', 'Another category, same layout logic', '1/13', None, 56, extra='max-width:min(100%,640px)')), 'side'))
+    out.append(sec('07', 'Final applications', 'What the work covered.', '',
         outs([('Icon library', 'Benefit icons in one style.'), ('Listing image sets', 'Per product, combining icons and photography.'), ('Platform versions', 'Sized for each marketplace.')]), 'top'))
     return out
 
 def body_hatachana():
     out = []
     out.append(cover('#fff', '2.165', '<div class="full">' + img('hatachana-00', 'Hatachana identity and app overview', '100vw', True) + '</div>', 'fullimg'))
-    out.append(sec('01', 'Challenge', 'From curiosity to a guided visit.', ['Tel Aviv’s Central Bus Station has become an attraction for people interested in unusual and abandoned urban spaces. The challenge was to turn that curiosity into a guided experience that feels safe, accessible and easy to navigate.',
-        'The brief called for a visual identity and a mobile flow that lets users discover tours, view details and register for a guided visit.']))
-    out.append(sec('02', 'Concept', 'Industrial, but approachable.',
-        ['The identity balances the raw, urban character of the station with a clear, approachable digital system. Industrial neutrals set the atmosphere, while a strong yellow accent adds visibility, guidance and a sense of movement through the space.',
-         '<b>Identity.</b> A bold wordmark, a compact icon and a limited palette of yellow, black, white and greys, built to move between physical and digital applications.',
-         '<b>Illustration.</b> Character illustrations make the experience feel more human against the station’s heavier urban character.'],
-        '<div class="chars three">' + img('hatachana-01', 'Female urban explorer illustration', '(max-width:700px) 30vw, 300px')
-        + img('hatachana-02', 'Male urban explorer illustration', '(max-width:700px) 30vw, 300px') + '</div>'))
-    out.append(sec('03', 'Visual language', 'A compact system.', 'Typography, colour, icons and illustration form one small set that keeps the app and supporting digital materials consistent. Buttons and form fields were designed as reusable components.'))
-    out.append(sec('04', 'Mobile experience', 'From sign-up to booking.', 'The flow takes users from registration to discovering a tour, reviewing its details and confirming a booking. Tour screens show duration, price, date, guide and group size.',
-        '<div class="gal n5 phones stagger">'
-        + fig('home-05', 'Hatachana mobile introduction', 'Introduction', sizes='(max-width:700px) 46vw, 20vw', eager=True)
-        + fig('hatachana-07', 'Hatachana sign-in screen', 'Join', sizes='(max-width:700px) 46vw, 20vw', eager=True)
-        + fig('hatachana-06', 'Hatachana tour discovery screen', 'Tour browsing', sizes='(max-width:700px) 46vw, 20vw', eager=True)
-        + fig('home-06', 'Hatachana tour detail mobile screen', 'Tour details', sizes='(max-width:700px) 46vw, 20vw', eager=True)
-        + fig('hatachana-05', 'Hatachana tour details and booking screen', 'Booking', sizes='(max-width:700px) 46vw, 20vw', eager=True)
-        + '</div>', 'top'))
-    out.append(sec('05', 'User flow', 'Join. Explore. Choose. Book.', '',
-        steps([('Join', 'Onboarding and registration.'), ('Explore', 'Browse the available tours.'), ('Choose', 'Review the tour details.'), ('Book', 'Confirm the booking.')]), 'top'))
-    out.append(sec('06', 'Delivered', 'What the concept covers.', '',
-        outs([('Identity', 'Wordmark, icon and colour palette.'), ('Illustration', 'Explorer characters.'), ('Components', 'Buttons and form fields.'), ('Mobile screens', 'Onboarding, sign-up, tour browsing, details and booking.')]), 'top'))
+    out.append(sec('01', 'Context & objectives', 'From curiosity to a guided visit.', ['Tel Aviv’s Central Bus Station has become an attraction for people interested in unusual and abandoned urban spaces. The challenge was to turn that curiosity into a guided experience that feels safe, accessible and easy to navigate.',
+        'The brief called for a visual identity and a mobile app that lets users discover tours, view details and register for a guided visit.']))
+    out.append(sec('02', 'Visual identity', 'Industrial, but approachable.',
+        ['The identity balances the raw, urban character of the station with a clear, approachable digital system. Industrial neutrals set the atmosphere, while a strong yellow adds visibility, guidance and a sense of movement through the space.',
+         '<b>Wordmark and icon.</b> A bold Hebrew wordmark paired with a compact icon, built to move between physical and digital applications.',
+         '<b>Typography.</b> A Hebrew type scale with two heading sizes (24 and 20 px) and two text sizes (14 and 12 px).'],
+        M(F('hatachana-wordmark', 'Hatachana wordmark and icon on black, with the tagline', 'Wordmark, icon and tagline', '1/8', None, 62))
+        + M(F('hatachana-board-type', 'Hatachana typography scale and colour palette with hex values', 'Typography and colour', '1/10', None, 70), cls='again'), 'top'))
+    out.append(sec('03', 'Illustration & design system', 'People first, then components.',
+        ['Character illustrations make the experience feel more human against the station’s heavier urban character. The same explorers appear in the identity and inside the app.',
+         'Line icons for bookmarks, time, date, price, home and profile sit with reusable buttons and form fields, so every screen draws on the same parts.'],
+        '<div class="chars three" style="max-width:640px">' + img('hatachana-01', 'Female urban explorer illustration', '(max-width:700px) 30vw, 300px')
+        + img('hatachana-02', 'Male urban explorer illustration', '(max-width:700px) 30vw, 300px') + '</div>'
+        + M(F('hatachana-board-comp', 'Hatachana buttons, form fields and character illustrations', 'Components and illustrations', '1/13', None, 92), cls='again')
+        + M(F('hatachana-icons', 'Hatachana line icon set: bookmark, clock, calendar, home, price tag, profile', 'Icon set', '1/6', None, 40, extra='max-width:454px'), cls='again'), 'top'))
+    def ph(items, n, size):
+        return f'<div class="gal n{n} phones">' + ''.join(fig(a, b, c, sizes=size) for a, b, c in items) + '</div>'
+    out.append(sec('04', 'Digital experience', 'Discover. Choose. Book.', 'The core of the app is tour discovery and booking: a card list of tours, a detail page with duration, price, date, guide and group size, and a booking confirmation. Onboarding and account screens support it.',
+        ph([('hatachana-s-list', 'Tour browsing screen with tour cards', 'Discover — tour list'),
+            ('hatachana-s-details', 'Tour details screen', 'Choose — tour details'),
+            ('hatachana-s-popup', 'Booking confirmation popup', 'Book — confirmation')], 3, '(max-width:700px) 46vw, 24vw')
+        + '<p class="sublab" style="margin:clamp(36px,5vw,64px) 0 14px">Getting started</p>'
+        + ph([('hatachana-s-splash1', 'Onboarding screen with the explorer holding a camera', 'Onboarding'),
+              ('hatachana-s-splash2', 'Onboarding screen with the walking traveller', 'Onboarding'),
+              ('hatachana-s-signup', 'Sign-up form', 'Sign-up'),
+              ('hatachana-s-login', 'Sign-in screen with wordmark', 'Sign-in')], 4, '(max-width:700px) 46vw, 16vw'), 'top'))
+    out.append(sec('05', 'Final applications', 'The identity in use.', 'The wordmark, illustration and palette carry from the app to a landing page, shown here on a laptop. Hatachana is an academic concept, not a client project.',
+        M(F('hatachana-web', 'Hatachana landing page', 'Landing page', '1/7', None, 46),
+          F('hatachana-laptop', 'Hatachana landing page on a laptop', 'Landing page on a laptop', '7/13', None, 46))
+        + '<div style="margin-top:clamp(40px,6vw,88px)">' + outs([('Identity', 'Wordmark, icon and colour palette.'), ('Illustration', 'Explorer characters.'), ('Design system', 'Type scale, icons, buttons and form fields.'), ('Mobile app', 'Tour discovery, details, booking, onboarding and sign-in.'), ('Landing page', 'Web layout with app store badges.')]) + '</div>', 'top'))
     return out
 
 def body_sambusak():
@@ -325,7 +335,7 @@ def case_page(i):
     note_txt = '' if p['kind'] == 'real' else '<span class="acad-note">Academic concept — not a client project</span>'
     nbg, nimg, nalt = NEXT_THUMB[nxt['slug']]
     nxt_img = img(nimg, nalt, '(max-width:700px) 80vw, 380px')
-    html = head(f"{p['short'].replace('&amp;','&amp;')} — Tzadik Azaria", p['desc'], 'inner case', og='og-' + p['slug'])
+    html = head(f"{p['short'].replace('&amp;','&amp;')} — Tzadik Azaria", p['desc'], 'inner case' + (' ff2' if p['slug'] in ('marketplace', 'hatachana') else ''), og='og-' + p['slug'])
     html += header('section')
     html += f'''<main id="main">
 <section class="ch wrap">
@@ -423,14 +433,14 @@ def home():
         return (f'<a class="{cls} rv" href="{p["slug"]}.html">{tile_media(p["slug"])}'
                 f'<span class="pj-c"><span class="pj-n">{p["n"]}</span><span class="pj-t"><h3>{p["short"]}</h3><p>{p["blurb"]}</p></span>'
                 f'<span class="pj-k"><span class="kind {k}">{p["kind_label"]}</span><span class="pj-tags">{p["tag"]}</span><span class="pj-cta">View case study <i aria-hidden="true">→</i></span></span></span></a>')
-    h = head('Tzadik Azaria — Visual &amp; Creative Designer', 'Portfolio of Tzadik Azaria, a digital designer with in-house and freelance experience in e-commerce, campaigns, branding and print.', 'home', og='og-home', home=True)
+    h = head('Tzadik Azaria — Digital &amp; Visual Designer', 'Portfolio of Tzadik Azaria, a digital and visual designer creating visual identities, digital campaigns and scalable visual systems across branding, e-commerce and marketing.', 'home', og='og-home', home=True)
     h += header('work')
     h += f'''<main id="main">
 <section class="hero2" id="hero" aria-labelledby="hero-title">
-<div class="hero2-in wide"><p class="eyebrow"><i aria-hidden="true"></i>Visual &amp; Creative Designer</p>
+<div class="hero2-in wide"><p class="eyebrow"><i aria-hidden="true"></i>Digital &amp; Visual Designer</p>
 <h1 id="hero-title"><span>Design with clarity.</span><span class="l2">And a <b class="sel">point of view.<i class="hd tl"></i><i class="hd tr"></i><i class="hd bl"></i><i class="hd br"></i><em class="dim" aria-hidden="true">W 0 × H 0</em></b></span></h1>
 <svg class="vec" role="group" aria-label="Interactive curve that reshapes the headline type"><path class="vp" d=""/><path class="vh" d=""/><g class="vpts"></g></svg>
-<div class="hero-row"><p class="sub">Digital designer with in-house and freelance experience across e&#8209;commerce, campaigns, branding and print.</p>
+<div class="hero-row"><p class="sub">I create visual identities, digital campaigns and scalable visual systems across branding, e&#8209;commerce and marketing.</p>
 <div class="actions"><a class="cta" href="#work">Selected projects <span aria-hidden="true">↓</span></a><a class="ghost" href="about.html">About me <span aria-hidden="true">→</span></a></div></div>
 <div class="hero-foot"><span>Tzadik Azaria</span><p class="hint">Drag the middle point of the curve, or focus it and use the arrow keys, to reshape the type.</p><span>Open to full-time roles</span></div></div></section>
 
@@ -442,7 +452,7 @@ def home():
 {tile(PROJECTS[3])}
 </div></section>
 
-<section class="about-strip wrap"><h2 class="rv">From product pages<br><em>to brand identities.</em></h2><p class="rv">I’m a digital designer with in-house and freelance experience. I’ve created e-commerce content, campaign and social visuals, and promotional materials for beauty and wellness brands, and branding, signage and print for freelance clients. I care about typography, layout and consistency, and I like seeing a project through from brief to final delivery.</p><a class="text-link rv" href="about.html">More about me <span aria-hidden="true">→</span></a></section></main>
+<section class="about-strip wrap"><h2 class="rv">From product pages<br><em>to brand identities.</em></h2><p class="rv">I’m a digital and visual designer with in-house and freelance experience. I’ve created e-commerce content, campaign and social visuals, and promotional materials for beauty and wellness brands, and branding, signage and print for freelance clients. I care about typography, layout and consistency, and I like seeing a project through from brief to final delivery.</p><a class="text-link rv" href="about.html">More about me <span aria-hidden="true">→</span></a></section></main>
 '''
     h += FOOTER
     open(f'{ROOT}/index.html', 'w').write(h)
@@ -451,16 +461,16 @@ def home():
 
 # ---------------------------------------------------------------- about
 def about():
-    h = head('About — Tzadik Azaria', 'Tzadik Azaria is a digital designer with in-house and freelance experience in e-commerce content, digital campaigns, social media, web visuals and print.', 'inner about', og='og-home')
+    h = head('About — Tzadik Azaria', 'Tzadik Azaria is a digital and visual designer with in-house and freelance experience in e-commerce content, digital campaigns, social media, web visuals and print.', 'inner about', og='og-home')
     h += header('about')
     exp = [
-        ('OG Brands Ltd.', 'Designed digital and print assets for international beauty and wellness brands across e-commerce, social media, campaigns and retail. Created product visuals, banners, newsletters, marketplace content and promotional materials, working with marketing, sales, operations and external suppliers.'),
+        ('OG Global Import', 'Designed digital and print assets for international beauty and wellness brands across e-commerce, social media, campaigns and retail. Created product visuals, banners, newsletters, marketplace content and promotional materials, working with marketing, sales, operations and external suppliers.'),
         ('Freelance', 'Designed branding, brochures, signage, presentations and digital marketing materials for clients across different industries. Developed visual solutions around each client’s needs and managed projects from the initial brief through feedback, revisions and final delivery.'),
         ('ORT Hermelin College', 'Designed posters, educational publications and marketing materials for college initiatives. Created digital and print assets and assisted students with design principles and creative software.'),
     ]
     xp = ''.join(f'<article class="xp"><span class="xn">0{i+1}</span><h2>{o}</h2><p>{d}</p></article>' for i, (o, d) in enumerate(exp))
     h += f'''<main id="main"><div class="about-page wrap">
-<section class="about-hero"><div><p class="eyebrow">About Tzadik</p><h1>Thoughtful design.<br><em>From idea<br>to execution.</em></h1></div><p class="about-intro">I’m Tzadik Azaria, a digital designer with in-house and freelance experience. I create e-commerce content, digital campaigns, social media assets, web visuals and print materials, with an eye for typography, layout and brand consistency.</p></section>
+<section class="about-hero"><div><p class="eyebrow">About Tzadik</p><h1>Thoughtful design.<br><em>From idea<br>to execution.</em></h1></div><p class="about-intro">I’m Tzadik Azaria, a digital and visual designer with in-house and freelance experience. I create e-commerce content, digital campaigns, social media assets, web visuals and print materials, with an eye for typography, layout and brand consistency.</p></section>
 <section class="about-story"><p class="eyebrow">Background</p><div><p>I’ve worked in-house on e-commerce and campaign content for beauty and wellness brands, and as a freelancer on branding, signage, brochures and presentations for clients in different industries. I’m used to taking a project from the brief and concept through to final production, and I enjoy adapting one visual idea to different channels and markets while keeping it consistent.</p><p>I studied media design at ORT Hermelin College, and I’m looking for a full-time role in a design studio, agency or in-house creative team.</p><div class="about-actions"><a class="text-link" href="assets/TzadikAzaria_CV.pdf" download="Tzadik-Azaria-CV.pdf">Download CV <span aria-hidden="true">↓</span></a><a class="text-link ghost-l" href="mailto:tzadikazaria@gmail.com">Get in touch <span aria-hidden="true">→</span></a></div></div></section>
 <section class="experience-section"><p class="eyebrow">Experience</p><div class="experience-list">{xp}</div></section>
 <section class="about-lists"><div><h2>Skills</h2><ul><li>Brand identity</li><li>Campaigns &amp; social visuals</li><li>E-commerce, product visuals &amp; marketplaces</li><li>Shopify &amp; email</li><li>Web design, landing pages &amp; responsive</li><li>Print, packaging &amp; production</li><li>Presentations &amp; video editing</li></ul></div><div><h2>Tools</h2><ul><li>Figma · Wix Studio</li><li>Adobe Photoshop · Illustrator</li><li>Adobe InDesign · Premiere Pro</li><li>Shopify · Blender</li></ul></div><div><h2>Education</h2><p>ORT Hermelin College<br>Practical Engineer Diploma<br>in Media Design</p><p class="education-note">Graduated with Distinction</p><h2 class="lang-h">Languages</h2><p>Hebrew — native<br>English — professional</p></div></section></div></main>
